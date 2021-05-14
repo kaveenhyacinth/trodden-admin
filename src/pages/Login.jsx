@@ -11,6 +11,7 @@ import {
 import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { Colors } from "../lib/theme";
+import { Copyright } from "../lib/components";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -80,11 +81,6 @@ export const Login = () => {
           </Button>
         </form>
       </div>
-      <Box mt={8}>
-        <Typography variant="body2" color="textSecondary" align="center">
-          {`Copyright © Trodden ${new Date().getFullYear()}.`}
-        </Typography>
-      </Box>
     </Container>
   );
 };
