@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { PrivateRoute } from "./lib/components";
+import {
+  Login,
+  Home,
+  Nomads,
+  Memories,
+  Trips,
+  Caravans,
+  Blazes,
+} from "./pages";
 
-function App() {
+const App = () => {
+  const [routerAuth, setRouterAuth] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <PrivateRoute auth={routerAuth} path="/" exact>
+          <Home />
+        </PrivateRoute>
+        <PrivateRoute auth={routerAuth} path="/nomads">
+          <Nomads />
+        </PrivateRoute>
+        <PrivateRoute auth={routerAuth} path="/memories">
+          <Memories />
+        </PrivateRoute>
+        <PrivateRoute auth={routerAuth} path="/trips">
+          <Trips />
+        </PrivateRoute>
+        <PrivateRoute auth={routerAuth} path="/caravans">
+          <Caravans />
+        </PrivateRoute>
+        <PrivateRoute auth={routerAuth} path="/blazes">
+          <Blazes />
+        </PrivateRoute>
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;

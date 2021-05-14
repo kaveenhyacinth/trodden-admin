@@ -1,0 +1,16 @@
+export const Colors = {
+  primary: "#2A603B",
+  accent: "#F7FDF7",
+  text: "#131915",
+  outline: "#00000033",
+  info: "#00000080",
+  background: "#2A603B05",
+  textOverlay: "#2A603BE6",
+  backgroundOverlay: "#0000001A",
+  red: "#9D2933",
+  pink: "#C3272B",
+  purple: "#875F9A",
+  blue: "#1D697C",
+  black: "#000000",
+  white: "#ffffff",
+};
