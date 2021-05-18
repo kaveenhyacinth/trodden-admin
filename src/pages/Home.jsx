@@ -1,7 +1,8 @@
+import React, { useEffect, useState } from "react";
 import { Box, Container, makeStyles } from "@material-ui/core";
-import React from "react";
 import { MemoryChart, InfoBox } from "../lib/components";
 import { Colors } from "../lib/theme";
+import api from "../api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,21 +36,48 @@ const useStyles = makeStyles((theme) => ({
 
 export const Home = (props) => {
   const classes = useStyles();
+  const [totals, setTotals] = useState({
+    caravanCount: 0,
+    nomadCount: 0,
+    destinationCount: 0,
+    tripCount: 0,
+  });
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await api.get.getTotals();
+        console.log(data);
+        if (!data.success) throw new Error(data.msg);
+        setTotals((prevState) => ({ ...prevState, ...data.result }));
+      } catch (error) {
+        alert("Something went wrong! " + error.message);
+      }
+    })();
+  }, [setTotals]);
 
   return (
     <Container className={classes.root}>
       <Box className={classes.infobar}>
-        <InfoBox className={classes.infobox} title="Total Nomads" amount={0} />
+        <InfoBox
+          className={classes.infobox}
+          title="Total Nomads"
+          amount={totals.nomadCount}
+        />
         <InfoBox
           className={classes.infobox}
           title="Total Caravans"
-          amount={0}
+          amount={totals.caravanCount}
         />
-        <InfoBox className={classes.infobox} title="Total Trips" amount={0} />
+        <InfoBox
+          className={classes.infobox}
+          title="Total Trips"
+          amount={totals.tripCount}
+        />
         <InfoBox
           className={classes.infobox}
           title="Total Destinations"
-          amount={0}
+          amount={totals.destinationCount}
         />
       </Box>
       <Box className={classes.chartbox} boxShadow={2}>

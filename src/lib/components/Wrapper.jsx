@@ -178,6 +178,14 @@ export const Wrapper = (props) => {
                   <ListItemText primary={"Nomads"} />
                 </ListItem>
               </Link>
+              <Link className={classes.link} to="memories">
+                <ListItem button>
+                  <ListItemIcon>
+                    <PostAdd />
+                  </ListItemIcon>
+                  <ListItemText primary={"Memories"} />
+                </ListItem>
+              </Link>
               <Link className={classes.link} to="/caravans">
                 <ListItem button>
                   <ListItemIcon>
@@ -194,15 +202,7 @@ export const Wrapper = (props) => {
                   <ListItemText primary={"Blazes"} />
                 </ListItem>
               </Link>
-              <Link className={classes.link} to="memories">
-                <ListItem button>
-                  <ListItemIcon>
-                    <PostAdd />
-                  </ListItemIcon>
-                  <ListItemText primary={"Memories"} />
-                </ListItem>
-              </Link>
-              <Link className={classes.link}  className={classes.link}to="trips">
+              <Link className={classes.link} to="trips">
                 <ListItem button>
                   <ListItemIcon>
                     <CardTravel />
